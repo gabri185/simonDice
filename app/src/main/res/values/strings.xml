@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">SimonDice</string>
-
+    <string name="verde">Verde</string>
+    <string name="azul">Azul</string>
+    <string name="rojo">Rojo</string>
+    <string name="amarillo">Amarillo</string>
+    <string name="jugar">Jugar</string>
 </resources>
