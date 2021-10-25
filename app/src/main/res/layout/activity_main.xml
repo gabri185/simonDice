@@ -12,27 +12,24 @@
         android:layout_width="166dp"
         android:layout_height="70dp"
         android:layout_marginStart="120dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="125dp"
         android:layout_marginBottom="144dp"
         android:text="@string/jugar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/verde"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="192dp"
-        android:scrollbarFadeDuration="250"
-        android:text="@string/verde"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/amarillo"
+        app:layout_constraintVertical_bias="0.0" />
+
 
     <Button
         android:id="@+id/rojo"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="#930909"
         android:text="@string/rojo"
         app:layout_constraintStart_toEndOf="@+id/verde"
         app:layout_constraintTop_toTopOf="@+id/verde" />
@@ -41,16 +38,18 @@
         android:id="@+id/amarillo"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="#957F0E"
         android:text="@string/amarillo"
         app:layout_constraintStart_toStartOf="@+id/verde"
-        app:layout_constraintTop_toTopOf="@+id/verde" />
+        app:layout_constraintTop_toBottomOf="@+id/verde" />
 
     <Button
         android:id="@+id/azul"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="#133793"
         android:text="@string/azul"
         app:layout_constraintStart_toEndOf="@+id/amarillo"
         app:layout_constraintTop_toTopOf="@+id/amarillo" />
@@ -60,7 +59,7 @@
         android:layout_width="75dp"
         android:layout_height="62dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="576dp"
+        android:layout_marginBottom="600dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -70,21 +69,38 @@
         android:layout_width="405dp"
         android:layout_height="45dp"
         android:layout_marginTop="4dp"
-        android:text="TextView"
+        android:text="@string/titulo"
+        android:textAlignment="center"
+        android:textColor="#FF5722"
+        android:textSize="25dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="92dp"
         android:layout_height="43dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="68dp"
         android:layout_marginEnd="76dp"
-        android:text="TextView"
+        android:text="@string/tcontador"
+        android:textColor="#000000"
+        android:textSize="17dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/verde"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="132dp"
+        android:backgroundTint="#088509"
+        android:text="@string/verde"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

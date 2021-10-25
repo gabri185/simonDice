@@ -5,9 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
-    var contadorRonda: Int =0;
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,20 +16,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
         val botonJugar: Button = findViewById(R.id.jugar)
         botonJugar.setOnClickListener(){
             mostrarRonda()
-            ejecutarSecuencia()
+            //ejecutarSecuencia()
         }
 
 
     }
-    val tContador: TextView = findViewById(R.id.contador)
+
     fun mostrarRonda(){
+        var contadorRonda: Int =0;
+        val tContador: TextView = findViewById(R.id.contador)
         Log.d("estado" , "aparece marcador de ronda")
-        tContador.setText(contadorRonda)
+        Toast.makeText(this, "Notificación larga " + contadorRonda, Toast.LENGTH_LONG).show()
+
+        //tContador.setText(contadorRonda)
     }
     fun ejecutarSecuencia(){
         Log.d("estado" , "se ejecuta la secuencia")
