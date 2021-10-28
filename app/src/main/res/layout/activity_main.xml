@@ -11,26 +11,21 @@
         android:id="@+id/jugar"
         android:layout_width="166dp"
         android:layout_height="70dp"
-        android:layout_marginStart="120dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="125dp"
-        android:layout_marginBottom="144dp"
         android:text="@string/jugar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amarillo"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="@+id/azul"
+        app:layout_constraintStart_toStartOf="@+id/amarillo"
+        app:layout_constraintTop_toBottomOf="@+id/amarillo" />
 
 
     <Button
         android:id="@+id/rojo"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginEnd="76dp"
         android:backgroundTint="#930909"
         android:text="@string/rojo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/verde"
         app:layout_constraintTop_toTopOf="@+id/verde" />
 
@@ -95,8 +90,8 @@
         android:id="@+id/verde"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="92dp"
         android:backgroundTint="#088509"
         android:text="@string/verde"
         app:layout_constraintStart_toStartOf="parent"

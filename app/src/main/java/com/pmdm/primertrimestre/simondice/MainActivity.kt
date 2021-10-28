@@ -8,7 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
-
+    var contadorRonda: Int =0;
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,36 +17,76 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val botonJugar: Button = findViewById(R.id.jugar)
+        val bverde: Button = findViewById(R.id.verde)
+        val brojo: Button = findViewById(R.id.rojo)
+        val bamarillo: Button = findViewById(R.id.amarillo)
+        val bazul: Button = findViewById(R.id.azul)
         botonJugar.setOnClickListener(){
             mostrarRonda()
-            //ejecutarSecuencia()
+            ejecutarSecuencia()
         }
+
 
 
     }
 
     fun mostrarRonda(){
-        var contadorRonda: Int =0;
+        contadorRonda++
         val tContador: TextView = findViewById(R.id.contador)
         Log.d("estado" , "aparece marcador de ronda")
-        Toast.makeText(this, "Notificación larga " + contadorRonda, Toast.LENGTH_LONG).show()
-
+        Toast.makeText(this, "Mostramos contador " + contadorRonda, Toast.LENGTH_LONG).show()
+        var textocontador: String = contadorRonda.toString()
+        Log.d("estado" , "ronda:" + contadorRonda)
         //tContador.setText(contadorRonda)
     }
+
+
     fun ejecutarSecuencia(){
-        Log.d("estado" , "se ejecuta la secuencia")
 
         val randomInt = (0..4).random()
+        Log.d("estado" , "se ejecuta la secuencia " + randomInt)
         var posicion:Int =0;
-        var array=emptyArray<Int>()
-        val drawableResource = when (randomInt) {
-            1 -> array[posicion] = 1;
-            2 -> array[posicion] = 2;
-            3 -> array[posicion] = 3;
-            else -> array[posicion] = 4;
+        var secuencia: Array<Int> = arrayOf()
+
+        /*
+        for(i in 1..contadorRonda) {
+            when (randomInt) {
+
+                1 -> secuencia[posicion] = 1;
+                2 -> secuencia[posicion] = 2;
+                3 -> secuencia[posicion] = 3;
+                else -> secuencia[posicion] = 4;
+
+            }
+            Log.d("estado" , "se guarda la secuencia " + secuencia[posicion])
+            posicion++
+
+        }
+*/
+        /*
+        posicion ++
+
+        var x:Int =0
+
+        while ( x > array.size) {
+            val activarsecuencia = when (array[x]) {
+                1 -> "corrutina2";
+                2 -> "corrutina2";
+                3 -> "corrutina2";
+                else -> "corrutina2";
+            }
+            x++
+
+
         }
 
+*/
+    }
 
+
+    suspend fun suspenderVerde(bverde: Button){
+
+       // delay(1500L)
     }
 
 
