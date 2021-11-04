@@ -25,6 +25,7 @@
         android:layout_marginEnd="76dp"
         android:backgroundTint="#930909"
         android:text="@string/rojo"
+        android:textColor="#930909"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/verde"
         app:layout_constraintTop_toTopOf="@+id/verde" />
@@ -36,6 +37,7 @@
         android:layout_marginTop="5dp"
         android:backgroundTint="#957F0E"
         android:text="@string/amarillo"
+        android:textColor="#957F0E"
         app:layout_constraintStart_toStartOf="@+id/verde"
         app:layout_constraintTop_toBottomOf="@+id/verde" />
 
@@ -46,18 +48,20 @@
         android:layout_marginStart="10dp"
         android:backgroundTint="#133793"
         android:text="@string/azul"
+        android:textColor="#133793"
         app:layout_constraintStart_toEndOf="@+id/amarillo"
         app:layout_constraintTop_toTopOf="@+id/amarillo" />
 
     <TextView
         android:id="@+id/contador"
-        android:layout_width="75dp"
-        android:layout_height="62dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="600dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_width="94dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="52dp"
+        android:text="RONDA: 0"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo" />
 
     <TextView
         android:id="@+id/titulo"
@@ -74,18 +78,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="92dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="76dp"
-        android:text="@string/tcontador"
-        android:textColor="#000000"
-        android:textSize="17dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/verde"
         android:layout_width="120dp"
@@ -94,6 +86,7 @@
         android:layout_marginTop="92dp"
         android:backgroundTint="#088509"
         android:text="@string/verde"
+        android:textColor="#088509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titulo" />
 
