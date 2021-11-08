@@ -5,6 +5,7 @@
     <string name="rojo">Rojo</string>
     <string name="amarillo">Amarillo</string>
     <string name="jugar">Jugar</string>
+    <string name="comprobar">COMPROBAR</string>
     <string name="tcontador">CONTADOR</string>
     <string name="titulo">SimonDice</string>
 </resources>

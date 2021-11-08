@@ -14,6 +14,8 @@ class MainActivity : AppCompatActivity() {
     var contadorRonda: Int = 0;
     var secuencia = ArrayList<Int>()
     var posicion: Int = 0;
+    var secuenciaUser = ArrayList<Int>()
+    var porcentaje: Int = 100;
 
     val rojo = Color.alpha(R.color.red)
     val verde = Color.alpha(R.color.green)
@@ -32,19 +34,51 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val botonJugar: Button = findViewById(R.id.jugar)
-
+        val bcomprobar: Button = findViewById(R.id.comprobar)
         val brojo: Button = findViewById(R.id.rojo)
         val bamarillo: Button = findViewById(R.id.amarillo)
         val bazul: Button = findViewById(R.id.azul)
+        val bverde: Button = findViewById(R.id.verde)
         botonJugar.setOnClickListener() {
             mostrarRonda()
+            secuenciaUser.clear()
             ejecutarSecuencia()
+
+
+        }
+        bcomprobar.setOnClickListener(){
+            comprobarSecuencia()
+        }
+        bverde.setOnClickListener(){
+            secuenciaUser.add(1)
+            val job = GlobalScope.launch(Dispatchers.Main) {
+                suspenderVerde(bverde, verdeClaro, verde)
+            }
+        }
+        brojo.setOnClickListener(){
+            secuenciaUser.add(2)
+            val job2 = GlobalScope.launch(Dispatchers.Main) {
+                suspenderRojo(brojo, rojoClaro, rojo)
+            }
+        }
+        bazul.setOnClickListener(){
+            secuenciaUser.add(3)
+            val job3 = GlobalScope.launch(Dispatchers.Main) {
+                suspenderAzul(bazul, azulClaro, azul)
+            }
+        }
+        bamarillo.setOnClickListener(){
+            secuenciaUser.add(4)
+            val job4 = GlobalScope.launch(Dispatchers.Main) {
+                suspenderAmarillo(bamarillo, amarilloClaro, amarillo)
+            }
         }
 
 
     }
 
     fun mostrarRonda() {
+
         val tContador: TextView = findViewById(R.id.contador)
         contadorRonda++
         tContador.text=( "RONDA: "+contadorRonda.toString())
@@ -68,7 +102,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        //for(i in 1..contadorRonda) {
+
 
         when (randomInt) {
 
@@ -86,55 +120,27 @@ class MainActivity : AppCompatActivity() {
                 secuencia.add(4)
             }
 
-            /*
-                1 -> secuencia[posicion] = 1;
-                2 -> secuencia[posicion] = 2;
-                3 -> secuencia[posicion] = 3;
-                else -> secuencia[posicion] = 4;
-
-*/
         }
         println(secuencia)
-        //Log.d("estado" , "se guarda la secuencia " + secuencia[posicion])
-        //posicion++
-        posicion=0
-        for (i in 1..contadorRonda) {
+        Log.d("estado" , "se guarda la secuencia " + secuencia[posicion])
 
-
-        when (secuencia[posicion]) {
-
-
-            1 -> {
-                val job = GlobalScope.launch(Dispatchers.Main) {
-                    suspenderVerde(bverde, verdeClaro, verde)
-                }
-            }
-
-            2 -> {
-                val job2 = GlobalScope.launch(Dispatchers.Main) {
-                    suspenderRojo(brojo, rojoClaro, rojo)
-                }
-            }
-            3 -> {
-                val job3 = GlobalScope.launch(Dispatchers.Main) {
-                    suspenderAzul(bazul, azulClaro, azul)
-                }
-            }
-            4 -> {
-                val job4 = GlobalScope.launch(Dispatchers.Main) {
-                    suspenderAmarillo(bamarillo, amarilloClaro, amarillo)
-                }
-            }
-
+        val job = GlobalScope.launch(Dispatchers.Main) {
+            suspenderJugar(bverde,brojo,bazul,bamarillo)
         }
-            posicion++
+        Log.d("estado" , "se ejecuta la secuencia " + secuencia[posicion])
 
-
-
-    }
     }
 
         fun comprobarSecuencia(){
+            if (secuencia.size == secuenciaUser.size){
+                if (secuencia==secuenciaUser){
+                    Toast.makeText(this, "Ronda " + contadorRonda + "SUPERADA", Toast.LENGTH_LONG).show()
+                }else{
+                    Toast.makeText(this, "PERDISTE", Toast.LENGTH_LONG).show()
+                }
+            }else{
+                Toast.makeText(this, "PERDISTE", Toast.LENGTH_LONG).show()
+            }
 
         }
 
@@ -145,32 +151,73 @@ class MainActivity : AppCompatActivity() {
 
 
 
+        suspend fun suspenderJugar(bverde: Button,brojo: Button, bazul: Button,bamarillo: Button) {
+            posicion=0
+
+            for (i in 1..contadorRonda) {
+
+
+                delay(1000L - contadorRonda*100)
+
+                when (secuencia[posicion]) {
+
+
+                    1 -> {
+                        val job = GlobalScope.launch(Dispatchers.Main) {
+                            suspenderVerde(bverde, verdeClaro, verde)
+                        }
+                    }
+
+                    2 -> {
+                        val job2 = GlobalScope.launch(Dispatchers.Main) {
+                            suspenderRojo(brojo, rojoClaro, rojo)
+                        }
+                    }
+                    3 -> {
+                        val job3 = GlobalScope.launch(Dispatchers.Main) {
+                            suspenderAzul(bazul, azulClaro, azul)
+                        }
+                    }
+                    4 -> {
+                        val job4 = GlobalScope.launch(Dispatchers.Main) {
+                            suspenderAmarillo(bamarillo, amarilloClaro, amarillo)
+                        }
+                    }
+
+                }
+                posicion++
+
+
+
+            }
+        }
         suspend fun suspenderVerde(bverde: Button, colorChange: Int, colorDefault: Int) {
             bverde.setBackgroundColor(colorChange)
-            delay(500L)
+            delay(500L - contadorRonda*50)
             bverde.setBackgroundColor(colorDefault)
-            delay(500L)
+            delay(500L - contadorRonda*50)
         }
 
         suspend fun suspenderRojo(brojo: Button, colorChange: Int, colorDefault: Int) {
             brojo.setBackgroundColor(colorChange)
-            delay(500L)
+            delay(500L  - contadorRonda*50)
             brojo.setBackgroundColor(colorDefault)
-            delay(500L)
+            delay(500L  - contadorRonda*50)
         }
 
-        suspend fun suspenderAzul(brojo: Button, colorChange: Int, colorDefault: Int) {
-            brojo.setBackgroundColor(colorChange)
-            delay(500L)
-            brojo.setBackgroundColor(colorDefault)
-            delay(500L)
+        suspend fun suspenderAzul(bazul: Button, colorChange: Int, colorDefault: Int) {
+            bazul.setBackgroundColor(colorChange)
+            delay(500L  - contadorRonda*50)
+            bazul.setBackgroundColor(colorDefault)
+            delay(500L  - contadorRonda*50)
         }
 
         suspend fun suspenderAmarillo(bamarillo: Button, colorChange: Int, colorDefault: Int) {
             bamarillo.setBackgroundColor(colorChange)
-            delay(500L)
+            delay(500L  - contadorRonda*50)
             bamarillo.setBackgroundColor(colorDefault)
-            delay(500L)
+            delay(500L  - contadorRonda*50)
+
         }
 
 
